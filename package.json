@@ -5,6 +5,7 @@
     "dev": "tsx watch src/index.ts"
   },
   "devDependencies": {
+    "@types/node": "^20.9.4",
     "tsx": "^4.3.0"
   }
 }
