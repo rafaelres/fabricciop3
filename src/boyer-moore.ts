@@ -1,6 +1,17 @@
+function buildCharMap(pattern: string):any{
+    let char_map:any = {}
+
+    for(let i:number=0; i<pattern.length; ++i){
+        char_map[pattern.charAt(i)] = i;
+    }
+
+    return char_map;
+}
+
+
 export function boyerMoore(pattern: string, text: string):number[]{
   let diff = text.length - pattern.length;
-  let char_map:any = this.build_char_map(pattern);
+  let char_map:any = buildCharMap(pattern);
   let shifts:number[] = []
   let shift:number = 0; //pattern displacement
   while ( shift <= diff){
