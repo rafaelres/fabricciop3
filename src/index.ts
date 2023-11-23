@@ -1,4 +1,4 @@
-boyer_moore(pattern: string, text: string):number[]{
+function boyer_moore(pattern: string, text: string):number[]{
     let diff = text.length - pattern.length;
     let char_map:any = this.build_char_map(pattern);
     let shifts:number[] = []
@@ -28,4 +28,3 @@ boyer_moore(pattern: string, text: string):number[]{
     }
     return shifts;        
 } 
-}
