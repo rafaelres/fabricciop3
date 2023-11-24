@@ -1,42 +1,34 @@
 export function buildCharMap(pattern: string): Record<string, number> {
-  const charMap: Record<string, number> = {}
-
-  for (let index: number = 0; index < pattern.length; ++index) {
-    charMap[pattern.charAt(index)] = index
+  const char_map: Record<string, number> = {}
+  for (let i: number = 0; i < pattern.length; ++i) {
+    char_map[pattern.charAt(i)] = i
   }
-
-  return charMap
+  return char_map
 }
 
 export function boyerMoore(pattern: string, text: string): number[] {
-  const charMap = buildCharMap(pattern)
   const diff = text.length - pattern.length
+  const char_map: Record<string, number> = buildCharMap(pattern)
   const shifts: number[] = []
-  let shift: number = 0 // Pattern displacement
-
+  let shift: number = 0 //pattern displacement
   while (shift <= diff) {
-    let matched = true
-    let index = pattern.length - 1
-
-    while (index >= 0) {
-      if (pattern.charAt(index) != text.charAt(index + shift)) {
-        matched = false // Char mismatch
+    let matched: boolean = true
+    let i = pattern.length - 1
+    while (i >= 0) {
+      if (pattern.charAt(i) != text.charAt(i + shift)) {
+        //char mismatch
+        matched = false
         break
       }
-      --index
+      --i
     }
-
     if (matched) {
       shifts.push(shift)
       ++shift
     } else {
-      if (charMap[text.charAt(index + shift)]) {
-        index - charMap[text.charAt(index + shift)] > 1
-          ? (shift = shift + (index - charMap[text.charAt(index + shift)]))
-          : ++shift
-      } else {
-        shift += index + 1
-      }
+      if (char_map[text.charAt(i + shift)] != undefined) {
+        i - char_map[text.charAt(i + shift)] > 1 ? (shift = shift + (i - char_map[text.charAt(i + shift)])) : ++shift
+      } else shift += i + 1
     }
   }
   return shifts
