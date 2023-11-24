@@ -17,7 +17,7 @@ export function boyerMoore(pattern: string, text: string):number[]{
   while ( shift <= diff){
       let matched:boolean = true;
       let i = pattern.length-1;
-      console.log("Position shift:....", shift);
+
       while(i>=0){
           if(pattern.charAt(i)!= text.charAt(i+shift)){ //char mismatch
               matched = false;

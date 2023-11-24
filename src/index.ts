@@ -8,4 +8,5 @@ const input = fs.readFileSync(file, {
     encoding: "utf-8", flag: "r"
 })
 
-
+const test = input.match(/\p{L}+|[.,!?;]/gu)
+console.log(test)
