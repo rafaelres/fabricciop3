@@ -1,15 +1,15 @@
 /*
-    P.3.8.
-    Desenvolva um programa que leia um arquivo de texto e armazene cada palavra em um array.
-    A seguir, utilizando o algoritmo de Boyer-Moore, determina, para cada palavra existente no arquivo, o número de ocorrências dessa palavra ao longo do texto.
-    Não ignore os caracteres de pontuação.
+  P.3.8.
+  Desenvolva um programa que leia um arquivo de texto e armazene cada palavra em um array.
+  A seguir, utilizando o algoritmo de Boyer-Moore, determina, para cada palavra existente no arquivo, o número de ocorrências dessa palavra ao longo do texto.
+  Não ignore os caracteres de pontuação.
 
-    Exemplo:
-        Entrada: Eu gosto muito de Matemática. Eu Amo Matemática.
-        Saída: { Eu: 2, gosto: 1, muito:1, de: 1, `Matemática`: 2, `.`:2}
+  Exemplo:
+    Entrada: Eu gosto muito de Matemática. Eu Amo Matemática.
+    Saída: { Eu: 2, gosto: 1, muito:1, de: 1, `Matemática`: 2, `.`:2}
 
-    P.3.9.
-    Repita o Problema 3.8 mas armazenando os dados do arquivo de texto em uma única variável do tipo string.
+  P.3.9.
+  Repita o Problema 3.8 mas armazenando os dados do arquivo de texto em uma única variável do tipo string.
 */
 
 import { boyerMoore } from "./boyer-moore"
@@ -33,7 +33,9 @@ const words = text.match(/\p{L}+|[.,!?;]/gu)
 
 words?.forEach((word) => {
   // Se a palavra já foi lida, interrompe a execução
-  if (readWords.includes(word)) return
+  if (readWords.includes(word)) {
+    return
+  }
 
   // Se a palavra já foi lida, adiciona ela ao array de palavras lidas
   readWords.push(word)
